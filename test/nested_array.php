@@ -10,7 +10,6 @@ $password = '';
 $database = 'news';
 $conn = mysqli_connect($host, $username, $password, $database);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
