@@ -1,10 +1,14 @@
 <?php
-// Sample nested array with student data
 $students = array(
     array("name" => "Awais", "regno" => "123", "class" => "10th", "address" => "Khaur"),
     array("name" => "Ali", "regno" => "123", "class" => "12th", "address" => "Khaur"),
     array("name" => "Tahir", "regno" => "123", "class" => "11th", "address" => "Khaur")
 );
+$host = 'localhost'; 
+$username = 'root'; 
+$password = ''; 
+$database = 'news';
+$conn = mysqli_connect($host, $username, $password, $database);
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +50,60 @@ $students = array(
             </tr>
         <?php endforeach; ?>
     </table>
+    <h2>Student Data</h2>
+  <?php  $query = mysqli_query($conn, "SELECT * FROM registration");
+if (!$query) {
+    die("Error fetching data: " . mysqli_error($conn));
+}
+
+$dataArray = array();
+while ($row = mysqli_fetch_assoc($query)) {
+    $dataArray[] = $row; 
+ } ?>
+ <table >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Passowrd</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($dataArray as $row): ?>
+            <tr>
+                <td><?php echo $row['ID']; ?></td>
+                <td><?php echo $row['Name']; ?></td>
+                <td><?php echo $row['Email']; ?></td>
+                <td><?php echo $row['Password']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php
+while ($row = mysqli_fetch_assoc($query)) {
+    $dataArray[] = $row; 
+}
+?>
+<table>
+<h2>Student Data</h2>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Passowrd</th>
+        </tr>
+    </thead>
+<?php for($i = 0; $i < count($dataArray); $i++) { ?>
+    
+    <tr>
+        <td><?php echo $dataArray[$i]['Name']; ?></td>
+        <td><?php echo $dataArray[$i]['Email']; ?></td>
+        <td><?php echo $dataArray[$i]['Password']; ?></td>
+    </tr>
+    
+<?php } ?>
+</table>
 </body>
 </html>
 <!-- In this I have a main array in that array some more array  -->
