@@ -65,7 +65,6 @@ let intervalId = setInterval(function () {
 container.addEventListener('mouseenter', function () {
     clearInterval(intervalId);
 });
-
 container.addEventListener('mouseleave', function () {
     intervalId = setInterval(function () {
         handleSlider('next');
