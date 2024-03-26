@@ -1,15 +1,17 @@
 // var slideIndex = 0;
 // showSlides();
-
-// function showSlides() {
+// function showSlides()
+// {
 //     var slides = document.getElementsByClassName("slide");
 //     var radios = document.getElementsByName("r");
-//     for (var i = 0; i < slides.length; i++) {
+//     for (var i = 0; i < slides.length; i++) 
+//     {
 //         slides[i].style.display = "none";
 //         radios[i].checked = false;
 //     }
 //     slideIndex++;
-//     if (slideIndex > slides.length) {
+//     if (slideIndex > slides.length) 
+//     {
 //         slideIndex = 1;
 //     }
 //     slides[slideIndex - 1].style.display = "block";
