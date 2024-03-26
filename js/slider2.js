@@ -2,7 +2,6 @@ let nextbtn = document.querySelector('#nextbtn');
 let previousbtn = document.querySelector('#previousbtn');
 let container = document.querySelector('.slider__elements');
 let dotsContainer = document.querySelector('.dots-container');
-
 function createDots() {
     dotsContainer.innerHTML = '';
     let slides = container.querySelectorAll('.slider__element');
@@ -17,10 +16,8 @@ function createDots() {
     }
 }
 createDots();
-
 let dots = Array.from(document.querySelectorAll('.dot'));
 let activeDotIndex = 0;
-
 function handleSlider(text) {
     let activeEl = document.querySelector('.active');
     let nextEl = document.querySelector('.next');
