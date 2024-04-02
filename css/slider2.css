@@ -15,6 +15,7 @@ button
     background: transparent;
     outline: none;
     border: none;
+    margin-top: 13rem;
     width: 50px;
     height: 50px;
 }
@@ -24,6 +25,8 @@ button
     margin-right: auto;
     margin-top: 5%;
     width: 50%;
+    background: chocolate;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
 }
 .slider__inner
 {
@@ -41,18 +44,17 @@ button
 .active
 {
     opacity: 1;
-    transition: transform 0.7s ease;
+    transition: transform 0.7s ease-in;
 }
 .next
 {
    opacity: 0;
-   transform: translateX(100%);
-  
+   transform: rotate(90deg);   
 }
 .previous
 {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: rotate(90deg);  
 }
 .slider__element > * + *
 {
@@ -86,7 +88,7 @@ button
 }
 .dots-container {
     text-align: center;
-    margin-top: 20rem; 
+    margin-top: 10rem; 
 
 }
 .dot {

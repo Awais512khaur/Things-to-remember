@@ -58,12 +58,12 @@ previousbtn.addEventListener('click', function () {
 });
 let intervalId = setInterval(function () {
     handleSlider('next');
-}, 2000);
+}, 3000);
 container.addEventListener('mouseenter', function () {
     clearInterval(intervalId);
 });
 container.addEventListener('mouseleave', function () {
     intervalId = setInterval(function () {
         handleSlider('next');
-    }, 2000);
+    }, 3000);
 });

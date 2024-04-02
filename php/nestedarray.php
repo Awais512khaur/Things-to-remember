@@ -105,4 +105,94 @@ while ($row = mysqli_fetch_assoc($query)) {
 </table>
 </body>
 </html>
-<!-- In this I have a main array in that array some more array  -->
+<?php
+class news 
+{
+
+}
+?>
+
+OOP
+Symfony 
+
+<!-- OOP in PHP -->
+
+<?php
+
+class Database {
+    private $host = 'localhost';
+    private $username = 'root';
+    private $password = '';
+    private $database = 'news';
+    private $conn;
+
+    public function __construct() {
+        $this->conn = mysqli_connect($this->host, $this->username, $this->password, $this->database);
+        if (!$this->conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+    }
+
+    public function getStudents() {
+        $students = array(
+            array("name" => "Awais", "regno" => "123", "class" => "10th", "address" => "Khaur"),
+            array("name" => "Ali", "regno" => "123", "class" => "12th", "address" => "Khaur"),
+            array("name" => "Tahir", "regno" => "123", "class" => "11th", "address" => "Khaur")
+        );
+        return $students;
+    }
+
+    public function getRegistrations() {
+        $query = mysqli_query($this->conn, "SELECT * FROM registration");
+        if (!$query) {
+            die("Error fetching data: " . mysqli_error($this->conn));
+        }
+
+        $registrations = array();
+        while ($row = mysqli_fetch_assoc($query)) {
+            $registrations[] = $row;
+        }
+        return $registrations;
+    }
+}
+
+class StudentData {
+    private $db;
+
+    public function __construct(Database $db) {
+        $this->db = $db;
+    }
+
+    public function displayStudents() {
+        $students = $this->db->getStudents();
+        echo "<h2>Student Data</h2>";
+        echo "<table>";
+        echo "<tr><th>Name</th><th>Registration Number</th><th>Class</th><th>Address</th></tr>";
+        foreach ($students as $student) {
+            echo "<tr>";
+            echo "<td>{$student['name']}</td><td>{$student['regno']}</td><td>{$student['class']}</td><td>{$student['address']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+
+    public function displayRegistrations() {
+        $registrations = $this->db->getRegistrations();
+        echo "<h2>Registration Data</h2>";
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Email</th><th>Password</th></tr>";
+        foreach ($registrations as $row) {
+            echo "<tr>";
+            echo "<td>{$row['ID']}</td><td>{$row['Name']}</td><td>{$row['Email']}</td><td>{$row['Password']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+}
+
+$db = new Database();
+$studentData = new StudentData($db);
+$studentData->displayStudents();
+$studentData->displayRegistrations();
+
+?>
